@@ -9,14 +9,44 @@ import modelo.Monitor;
 
 public class Main {
 	
+	/**
+	 * Cola de estudiantes que esperan a ser atendidos (incluye el que está siendo atendido)
+	 */
 	private static Queue<Estudiante> colaEstudiantes;
+	
+	/**
+	 * Semilla para generar un número aleatorio
+	 */
 	private long semilla = Long.parseLong("1010");
-	private static Semaphore sEstudiante; // Se usa para despertar al monitor
-	private static Semaphore sMonitor; // Se usa para indicar que termino la monitoria
+	
+	/**
+	 * Semáforo empleado para despertar o dormir al monitor
+	 */
+	private static Semaphore sEstudiante; 
+	
+	/**
+	 * Semáforo para empezar o terminar una monitoría
+	 */
+	private static Semaphore sMonitor; 
+
+	/**
+	 * Prueba con seis estudiantes
+	 */
 	private static Estudiante e1, e2, e3, e4, e5, e6;
+	
+	/**
+	 * Monitor encargado de atender a los estudiantes
+	 */
 	private static Monitor monitor;
+	
+	/**
+	 * Semáforo empleado para indicar si un estudiante salió o entró a la cola
+	 */
 	private static Semaphore sCola;
 	
+	/**
+	 * Constructor de la clase principal
+	 */
 	public Main() {
 		sCola = new Semaphore(1,true);
 		sEstudiante = new Semaphore(1,true);
@@ -44,6 +74,7 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
+		@SuppressWarnings("unused")
 		Main main = new Main();		
 	}
 

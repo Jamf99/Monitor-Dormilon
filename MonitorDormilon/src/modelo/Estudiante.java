@@ -11,12 +11,24 @@ public class Estudiante extends Thread {
 	 */
 	private String nombre;
 	
+	/**
+	 * Semáforo que indica si un estudiante entró o salió de la cola
+	 */
 	private Semaphore sCola;
 	
+	/**
+	 * Semáfoto empleado para terminar una monitoría
+	 */
 	private Semaphore sMonitor;
 	
+	/**
+	 * Semáforo empleado para despertar al monitor
+	 */
 	private Semaphore sEstudiante;
 	
+	/**
+	 * Cola de estudiantes (incluye el que está en monitoría)
+	 */
 	private Queue<Estudiante> cola;
 	
 	/**
@@ -26,10 +38,12 @@ public class Estudiante extends Thread {
 	
 	/**
 	 * Constructor de la clase. Inicializa todos los datos requeridos
-	 * @param salaEspera
-	 * @param monitoria
-	 * @param nombre
-	 * @param semilla
+	 * @param nombre - Nombre del estudiante
+	 * @param sCola - Semáforo de la cola
+	 * @param sMonitor - Semáforo para empezar o terminar una monitoría
+	 * @param sEstudiante - Semáforo para dormir o despertar al monitor
+	 * @param cola - Cola de estudiantes
+	 * @param semilla - Semilla para generar un número aleatorio
 	 */
 	public Estudiante(String nombre, Semaphore sCola, Semaphore sMonitor, Semaphore sEstudiante, Queue<Estudiante> cola, long semilla) {
 		super();
@@ -72,6 +86,10 @@ public class Estudiante extends Thread {
 		}
 	}
 	
+	/**
+	 * Devuelve el nombre del estudiante
+	 * @return El nombre del estudiante
+	 */
 	public String getNombre() {
 		return nombre;
 	}
